@@ -24,6 +24,7 @@ parameters.count = 100000;
 parameters.size = 0.01;
 parameters.radius = 5;
 parameters.branches = 3;
+parameters.spin = 1;
 
 let geometry = null;
 let material = null;
@@ -50,7 +51,8 @@ const generateGalaxy = () => {
     const i3 = i * 3;
 
     const radius = Math.random() * parameters.radius;
-    const branchAngle = ((i % parameters.branches) / parameters.branches) * Math.PI * 2;
+    const branchAngle =
+      ((i % parameters.branches) / parameters.branches) * Math.PI * 2;
 
     positions[i3 + 0] = Math.cos(branchAngle) * radius; // x
     positions[i3 + 1] = 0; // y
@@ -105,6 +107,12 @@ gui
   .step(1)
   .onFinishChange(generateGalaxy);
 
+gui
+  .add(parameters, "spin")
+  .min(-5)
+  .max(5)
+  .step(0.001)
+  .onFinishChange(generateGalaxy);
 /**
  * Sizes
  */
