@@ -225,6 +225,7 @@ const tick = () => {
   const speed = 0.05; // speed of panning, adjust as needed
   const angle = speed * elapsedTime;
   camera.position.x = radius * Math.sin(angle);
+  camera.position.y = 6.9;
   camera.position.z = radius * Math.cos(angle);
 
   // Update controls
