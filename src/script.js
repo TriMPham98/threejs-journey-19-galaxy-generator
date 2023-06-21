@@ -7,7 +7,7 @@ import * as dat from "lil-gui";
  */
 // Debug
 const gui = new dat.GUI({
-  width: 369
+  width: 369,
 });
 
 // Canvas
@@ -23,11 +23,15 @@ const parameters = {};
 parameters.count = 1000;
 parameters.size = 0.02;
 
+let geometry = null;
+let material = null;
+let points = null;
+
 const generateGalaxy = () => {
   /**
    * Geometry
    */
-  const geometry = new THREE.BufferGeometry();
+  geometry = new THREE.BufferGeometry();
 
   const positions = new Float32Array(parameters.count * 3);
 
@@ -44,7 +48,7 @@ const generateGalaxy = () => {
   /**
    * Material
    */
-  const material = new THREE.PointsMaterial({
+  material = new THREE.PointsMaterial({
     size: parameters.size,
     sizeAttenuation: true,
     depthWrite: false,
@@ -54,14 +58,24 @@ const generateGalaxy = () => {
   /**
    * Points
    */
-  const points = new THREE.Points(geometry, material);
+  points = new THREE.Points(geometry, material);
   scene.add(points);
 };
 
 generateGalaxy();
 
-gui.add(parameters, "count").min(100).max(1000000).step(100).onFinishChange(generateGalaxy);
-gui.add(parameters, "size").min(0.001).max(0.1).step(0.001).onFinishChange(generateGalaxy);
+gui
+  .add(parameters, "count")
+  .min(100)
+  .max(1000000)
+  .step(100)
+  .onFinishChange(generateGalaxy);
+gui
+  .add(parameters, "size")
+  .min(0.001)
+  .max(0.1)
+  .step(0.001)
+  .onFinishChange(generateGalaxy);
 
 /**
  * Sizes
