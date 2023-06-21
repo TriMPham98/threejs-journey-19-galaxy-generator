@@ -159,8 +159,8 @@ gui
   .step(0.001)
   .onFinishChange(generateGalaxy);
 
-gui.addColor(parameters, "insideColor").onFinishChange;
-gui.addColor(parameters, "outsideColor").onFinishChange;
+gui.addColor(parameters, "insideColor").onFinishChange(generateGalaxy);
+gui.addColor(parameters, "outsideColor").onFinishChange(generateGalaxy);
 
 /**
  * Sizes
