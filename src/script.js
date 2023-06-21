@@ -25,6 +25,7 @@ parameters.size = 0.01;
 parameters.radius = 5;
 parameters.branches = 3;
 parameters.spin = 1;
+parameters.randomness = 0.02;
 
 let geometry = null;
 let material = null;
@@ -114,6 +115,14 @@ gui
   .max(5)
   .step(0.001)
   .onFinishChange(generateGalaxy);
+
+gui
+  .add(parameters, "randomness")
+  .min(0)
+  .max(2)
+  .step(0.001)
+  .onFinishChange(generateGalaxy);
+
 /**
  * Sizes
  */
