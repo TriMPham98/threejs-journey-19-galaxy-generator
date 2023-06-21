@@ -48,9 +48,11 @@ const generateGalaxy = () => {
   for (let i = 0; i < parameters.count; i++) {
     const i3 = i * 3;
 
-    positions[i3 + 0] = (Math.random() - 0.5) * 3;
-    positions[i3 + 1] = (Math.random() - 0.5) * 3;
-    positions[i3 + 2] = (Math.random() - 0.5) * 3;
+    const radius = Math.random() * parameters.radius;
+
+    positions[i3 + 0] = radius; // x
+    positions[i3 + 1] = 0; // y
+    positions[i3 + 2] = 0; // z
   }
 
   geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
@@ -87,7 +89,12 @@ gui
   .step(0.001)
   .onFinishChange(generateGalaxy);
 
-gui.add(parameters, "radius").min(0.01).max(20).step(0.01).onFinishChange(generateGalaxy);
+gui
+  .add(parameters, "radius")
+  .min(0.01)
+  .max(20)
+  .step(0.01)
+  .onFinishChange(generateGalaxy);
 
 /**
  * Sizes
