@@ -20,10 +20,10 @@ const scene = new THREE.Scene();
  * Galaxy
  */
 const parameters = {};
-parameters.count = 100000;
-parameters.size = 0.01;
+parameters.count = 690420;
+parameters.size = 0.001;
 parameters.radius = 5;
-parameters.branches = 3;
+parameters.branches = 4;
 parameters.spin = 1;
 parameters.randomness = 0.2;
 parameters.randomnessPower = 3;
@@ -219,6 +219,13 @@ const clock = new THREE.Clock();
 
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
+
+  // Update camera position to pan around the house
+  const radius = 10;
+  const speed = 0.05; // speed of panning, adjust as needed
+  const angle = speed * elapsedTime;
+  camera.position.x = radius * Math.sin(angle);
+  camera.position.z = radius * Math.cos(angle);
 
   // Update controls
   controls.update();
