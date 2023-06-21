@@ -6,7 +6,9 @@ import * as dat from "lil-gui";
  * Base
  */
 // Debug
-const gui = new dat.GUI();
+const gui = new dat.GUI({
+  width: 369
+});
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -40,10 +42,7 @@ const generateGalaxy = () => {
     positions[i3 + 2] = (Math.random() - 0.5) * 3;
   }
 
-  geometry.setAttribute(
-    "position",
-    new THREE.BufferAttribute(positions, 3)
-  )
+  geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 
   /**
    * Material
@@ -52,7 +51,7 @@ const generateGalaxy = () => {
     size: parameters.size,
     sizeAttenuation: true,
     depthWrite: false,
-    blending: THREE.AdditiveBlending
+    blending: THREE.AdditiveBlending,
   });
 
   /**
