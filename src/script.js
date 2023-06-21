@@ -23,6 +23,7 @@ const parameters = {};
 parameters.count = 100000;
 parameters.size = 0.01;
 parameters.radius = 5;
+parameters.branches = 3;
 
 let geometry = null;
 let material = null;
@@ -94,6 +95,13 @@ gui
   .min(0.01)
   .max(20)
   .step(0.01)
+  .onFinishChange(generateGalaxy);
+
+gui
+  .add(parameters, "branches")
+  .min(2)
+  .max(20)
+  .step(1)
   .onFinishChange(generateGalaxy);
 
 /**
