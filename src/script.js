@@ -22,7 +22,7 @@ const scene = new THREE.Scene();
 const parameters = {};
 parameters.count = 690420;
 parameters.size = 0.001;
-parameters.radius = 5;
+parameters.radius = 7;
 parameters.branches = 4;
 parameters.spin = 1;
 parameters.randomness = 0.2;
@@ -195,8 +195,8 @@ const camera = new THREE.PerspectiveCamera(
   100
 );
 camera.position.x = 3;
-camera.position.y = 3;
-camera.position.z = 3;
+camera.position.y = 5;
+camera.position.z = 8;
 scene.add(camera);
 
 // Controls
@@ -220,13 +220,13 @@ const clock = new THREE.Clock();
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
 
-  // Update camera position to pan around the house
-  const radius = 10;
-  const speed = 0.05; // speed of panning, adjust as needed
-  const angle = speed * elapsedTime;
-  camera.position.x = -radius * Math.sin(angle);
-  camera.position.y = 6.9;
-  camera.position.z = radius * Math.cos(angle);
+  // // Update camera position to pan around the house
+  // const radius = 10;
+  // const speed = 0.05; // speed of panning, adjust as needed
+  // const angle = speed * elapsedTime;
+  // camera.position.x = -radius * Math.sin(angle);
+  // camera.position.y = 6.9;
+  // camera.position.z = radius * Math.cos(angle);
 
   // Update controls
   controls.update();
